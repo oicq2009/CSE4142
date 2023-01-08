@@ -1,0 +1,37 @@
+`timescale 1ns / 1ps
+ 
+// input_4_NOR_tb
+ 
+module input_4_NOR_tb;
+// input
+reg aa, bb, cc, dd;
+// output
+wire e, f, g;
+ 
+input_4_NOR u_input_4_NOR (
+    .a(aa),
+    .b(bb),
+    .c(cc),
+    .d(dd),
+    
+    .e(e),
+    .f(f),
+    .g(g)
+    );
+ 
+initial aa = 1'b0;
+initial bb = 1'b0;
+initial cc = 1'b0;
+initial dd = 1'b0;
+ 
+always aa = #100 ~aa;
+always bb = #200 ~bb;
+always cc = #400 ~cc;
+always dd = #800 ~dd;
+ 
+initial begin
+    #1600
+    $finish;
+end
+ 
+endmodule
